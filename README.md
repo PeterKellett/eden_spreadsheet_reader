@@ -1,10 +1,71 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+## Workspace Purpose  
+For connection to Edens Schoolwork Google sheets.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Project Setup  
+https://developers.google.com/sheets/api/quickstart/python  
+### Google Sheets
+- Confirm the Google project folder folder - Eden Schoolwork  
+  - Click Enable  
+- Configure the OAuth consent screen  
+  - User Type - External  
+  - Click Create  
+- App information  
+  - App Name: eden_spreadsheet_reader
+  - User support Email: peterwkellett@gmail.com  
+  - Developer contact information: peterwkellett@gmail.com  
+  - Click Save and Continue  
+- Scopes  
+  - Skip, click Save and Continue  
+- Test users - Required bescause User Type above is set as External  
+  - Add Users  
+  - peterwkellett@gmail.com  
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+- Authorize credentials for a desktop application  
+  - Create Credentials > OAuth client ID  
+  - Application Type: Desktop App  
+  - Name: eden_spreadsheet_reader  
+  - Click Create  
+  - Download the credentials.json file and move to project directory  
+- Install the Google client library  
+  - pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib  
+- Configure the sample  
+  - In your working directory, create a file named read.py  
+  - Copy code
+
+#### Enable the Google Projects API's  
+- On the Google project dashboard, click Explore and Enable API's  
+  - Select Google Sheets API  
+  - Click Enable  
+- Add a Service Account  
+  - Click Manage Service Accounts and Create Service Account  
+  - Name: eden schoolwork reader  
+  - Copy the email address address created for the Service Account and share the Google sheets folder with that email  
+- Add a key for this Service Account  
+  - Open the Service Account and go  to Keys  
+  - Click Add Key  
+  - Create a credentials.json file  
+  - Move this file to GitPod project root directory and rename it keys.json  
+#### Preparing to make a delegated API call  
+- Docs: https://developers.google.com/identity/protocols/oauth2/service-account#python  
+- Copy python code and paste to read.py file  
+- Change the SERVICE_ACCOUNT_FILE path to keys.json  
+- Remove the copied SCOPES list and use the readonly SCOPES list already in the code and remove the .readonly text in the string  
+- Remove SAMPLE_DATA_RANGE from code  
+- Get SAMPLE_SPREADSHEET_ID string from the Google Sheets project
+  - Go to Google Sheets and copy url
+  - Paste url string for SAMPLE_SPREADSHEET_ID, remove https://docs.google.com/spreadsheets/d/ and /edit#gid=1737658404 from the url string  
+- See video from 13mins for code changes to read.py  
+
+
+
+
+
+
+
+
+https://www.youtube.com/watch?v=4ssigWmExak&t=2s
 
 ## Gitpod Reminders
 
@@ -12,18 +73,11 @@ To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the ter
 
 `python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
 To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
 
 In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
+## Heroku
 To log into the Heroku toolbelt CLI:
 
 1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
@@ -34,43 +88,8 @@ To log into the Heroku toolbelt CLI:
 
 You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
 
 ## FAQ about the uptime script
 
