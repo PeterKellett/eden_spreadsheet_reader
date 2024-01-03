@@ -58,17 +58,15 @@ https://developers.google.com/sheets/api/quickstart/python
   - Paste url string for SAMPLE_SPREADSHEET_ID, remove https://docs.google.com/spreadsheets/d/ and /edit#gid=1737658404 from the url string  
 - See video from 13mins for code changes to read.py  
 
+### Documentation refs
+- https://developers.google.com/workspace/guides/auth-overview
+- https://developers.google.com/sheets/api/guides/concepts  
+- https://www.youtube.com/watch?v=4ssigWmExak&t=2s
 
-
-
-
-
-
-
-https://www.youtube.com/watch?v=4ssigWmExak&t=2s
+#### Alternative doc - django-gsheets-import  
+- https://django-gsheets-import.readthedocs.io/en/latest/user_manual/demo_app.html  
 
 ## Gitpod Reminders
-
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
 `python3 -m http.server`

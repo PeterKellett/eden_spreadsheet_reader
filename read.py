@@ -22,14 +22,47 @@ result = (
     .execute()
 )
 values = result.get("values", [])
-print("values = ", values)
-
-    # if not values:
-    #   print("No data found.")
-    #   return
-
-    # print("Name, Major:")
-    # for row in values:
-    #   # Print columns A and E, which correspond to indices 0 and 4.
-    #   print(f"{row[0]}, {row[4]}")
-
+# print("values = ", values)
+output = []
+new_row = []
+numerator = ' '
+denominator = ' '
+for item in values:
+    if item:
+        # print("item = ", item)
+        split_string = item[0].split(' ')
+        if split_string[0][-1] == '.':
+            if new_row:
+                new_row.append(numerator)
+                new_row.append(denominator)
+                output.append(new_row)
+                new_row = []
+                # print(f"split_string = {item[0]}")
+            new_row.append(item[0])
+        elif 'Minutes' in item[0]:
+            # print("YES")
+            numerator = ' '
+            denominator = ' '
+            # new_row.append('')
+            new_row.append(item[0])
+        elif '/' in item[0]:
+            new_row.append(item[0])
+            # new_row.append('')
+            split_string = item[0].split('/')
+            print("split_string = ", split_string)
+            numerator = split_string[0]
+            split_string_further = split_string[1].split(' ')
+            denominator = split_string_further[1]
+        else: 
+            new_row.append(item[0])
+output.append(new_row)
+# print("output = ", output)
+result = (
+    sheet.values().update(
+        spreadsheetId=SAMPLE_SPREADSHEET_ID,
+        range="Format!A2",
+        valueInputOption="USER_ENTERED",
+        body={"values": output},
+    )
+    .execute()
+)
