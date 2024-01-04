@@ -13,7 +13,7 @@ creds = service_account.Credentials.from_service_account_file(
 SAMPLE_SPREADSHEET_ID = "1BbkF3n8NKAacdAle7atDHNo-YfnQI8PvDsv0BvuE0S8"
 
 service = build("sheets", "v4", credentials=creds)
-
+print("Reading...")
 # Call the Sheets API
 sheet = service.spreadsheets()
 result = (
@@ -27,6 +27,7 @@ output = []
 new_row = []
 numerator = ' '
 denominator = ' '
+print("Formatting...")
 for item in values:
     if item:
         # print("item = ", item)
@@ -49,7 +50,7 @@ for item in values:
             new_row.append(item[0])
             # new_row.append('')
             split_string = item[0].split('/')
-            print("split_string = ", split_string)
+            # print("split_string = ", split_string)
             numerator = split_string[0]
             split_string_further = split_string[1].split(' ')
             denominator = split_string_further[1]
@@ -57,12 +58,14 @@ for item in values:
             new_row.append(item[0])
 output.append(new_row)
 # print("output = ", output)
+print("Writing...")
 result = (
     sheet.values().update(
         spreadsheetId=SAMPLE_SPREADSHEET_ID,
-        range="Format!A2",
+        range="Format!A1",
         valueInputOption="USER_ENTERED",
         body={"values": output},
     )
     .execute()
 )
+print("DONE!!")
